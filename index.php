@@ -11,13 +11,15 @@
 		
 		$nameSpace = str_replace('\\', DIRECTORY_SEPARATOR, strtolower($match[1]));
 		$className = $match[2];
-		
+
 		$path = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . $nameSpace . DIRECTORY_SEPARATOR . $className . '.php';
+
+
 		
 		if (file_exists($path)) {
 			require_once $path;
-			
-			if (class_exists($class, false)) {
+
+			if (class_exists($class, false) || trait_exists($class, false)) {
 				return true;
 			} else {
 				throw new \Exception("Класс $class не найден в файле $path. Проверьте правильность написания имени класса внутри указанного файла.");
