@@ -8,7 +8,6 @@ use Core\tAuth;
 
 class MainController extends Controller
 {
-
     use tAuth;
 
     public function init(){

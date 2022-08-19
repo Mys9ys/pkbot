@@ -4,7 +4,7 @@ namespace Core;
 
 trait tAuth
 {
-    private $authToken = '';
+    private $authToken = '1';
 
     public function getToken(){
         return $this->authToken;
