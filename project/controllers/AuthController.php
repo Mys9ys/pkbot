@@ -10,4 +10,9 @@ class AuthController extends Controller
         $this->title = 'Авторизация';
         return $this->render('auth/index');
     }
+
+    public function oauth(){
+        $this->title = 'Регистрация завершена';
+        return $this->render('auth/oAuth');
+    }
 }
