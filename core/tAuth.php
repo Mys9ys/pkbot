@@ -4,24 +4,39 @@ namespace Core;
 
 trait tAuth
 {
-    public $vkUrl = 'https://oauth.vk.com/authorize?';
-    private $clientId = '51405617';
-    protected $authToken = '';
-    private $redirectUri = 'auth/';
+//    public $vkUrl = 'https://oauth.vk.com/authorize?';
+//    private $clientId = '51405617';
+
+    private $oauth = 'https://api.vk.com/oauth/token?';
+    private $clientId = '2274003';
+    private $clientSecret = 'hHbZxrka2uZ6jB1inYsH';
+    protected $token = '';
+//    private $redirectUri = 'auth/';
 
     public $params = [];
 
-    public function __construct(){
-        $this->params = [
-            'client_id' => $this->clientId,
-            'display' => 'page',
-//            'redirect_uri' =>  '/' . $_SERVER['HTTP_HOST'] . '/' . $this->redirectUri,
-            'redirect_uri' =>  'http://pkbot.loc/auth/',
-            'scope' => 'friends',
-            'response_type' => 'code',
-            'v' => '5.131'
+    public function __construct($userName = '', $userPassword=''){
 
+        $this->params = [
+            'grant_type' => 'password',
+            'client_id' => $this->clientId,
+            'client_secret' => $this->clientSecret,
         ];
+
+        if($userName && $userPassword) {
+
+            $this->params['username'] = $userName;
+            $this->params['password'] = $userPassword;
+
+            $this->setToken();
+        }
+    }
+
+    protected function setToken(){
+        $request = file_get_contents($this->oauth.http_build_query($this->params));
+        if($request) $request = json_decode($request, true);
+
+        return $this->token= $request['access_token'] ?: '';
     }
 
 }

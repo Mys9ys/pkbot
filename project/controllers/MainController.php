@@ -12,7 +12,10 @@ class MainController extends Controller
 
     public function init(){
 
-        if(!$this->authToken) return $this->render('auth/index');
+        if(!$this->token) {
+            $this->title = 'Требуется авторизация';
+            return $this->render('auth/index');
+        }
 
         $this->title = 'Main';
         return $this->render('main/init');

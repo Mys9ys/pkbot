@@ -8,6 +8,6 @@ class Auth
 
     public function getAuthToken()
     {
-        return $this->authToken;
+        return $this->token;
     }
 }
