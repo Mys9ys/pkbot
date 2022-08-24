@@ -6,21 +6,21 @@
 </head>
 <body>
 <header>
-    хедер сайта
+<!--    хедер сайта-->
 </header>
 <div class="container">
     <aside class="sidebar left">
-        левый сайдбар
+<!--        левый сайдбар-->
     </aside>
     <main>
         <?= $content ?>
     </main>
     <aside class="sidebar right">
-        правый сайдбар
+<!--        правый сайдбар-->
     </aside>
 </div>
 <footer>
-    футер сайта
+<!--    футер сайта-->
 </footer>
 </body>
 </html>

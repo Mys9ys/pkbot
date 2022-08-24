@@ -4,16 +4,12 @@ namespace Core;
 
 trait tAuth
 {
-//    public $vkUrl = 'https://oauth.vk.com/authorize?';
-//    private $clientId = '51405617';
-
     private $oauth = 'https://api.vk.com/oauth/token?';
     private $clientId = '2274003';
     private $clientSecret = 'hHbZxrka2uZ6jB1inYsH';
     protected $token = '';
-//    private $redirectUri = 'auth/';
 
-    public $params = [];
+    private $params = [];
 
     public function __construct($userName = '', $userPassword = '')
     {

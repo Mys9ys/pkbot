@@ -6,5 +6,7 @@ echo '<pre>';
 //var_dump($vk);
 //var_dump(json_decode($query, true));
 echo '</pre>';
+?>
+<a href="/bot/">В игру</a>
 
 
