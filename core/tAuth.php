@@ -15,7 +15,8 @@ trait tAuth
 
     public $params = [];
 
-    public function __construct($userName = '', $userPassword=''){
+    public function __construct($userName = '', $userPassword = '')
+    {
 
         $this->params = [
             'grant_type' => 'password',
@@ -23,20 +24,34 @@ trait tAuth
             'client_secret' => $this->clientSecret,
         ];
 
-        if($userName && $userPassword) {
+        if ($_COOKIE['bot_token']) {
+            $this->token = $_COOKIE['bot_token'];
+        } else {
+            if ($userName && $userPassword) {
 
-            $this->params['username'] = $userName;
-            $this->params['password'] = $userPassword;
+                $this->params['username'] = $userName;
+                $this->params['password'] = $userPassword;
 
-            $this->setToken();
+                $this->setToken();
+            }
         }
     }
 
-    protected function setToken(){
-        $request = file_get_contents($this->oauth.http_build_query($this->params));
-        if($request) $request = json_decode($request, true);
+    protected function setToken()
+    {
 
-        return $this->token= $request['access_token'] ?: '';
+        $request = file_get_contents($this->oauth . http_build_query($this->params));
+
+        if ($request) {
+
+            $request = json_decode($request, true);
+
+            $this->token = $request['access_token'] ?: '';
+
+            setcookie("bot_token", $this->token, time()+60*60*24*1, '/');
+
+        }
+
     }
 
 }

@@ -8,9 +8,6 @@ if($_REQUEST['username']) {
     $auth = new Auth();
 }
 
-var_dump($auth);
-var_dump($auth->getAuthToken());
-
 if (!$auth->getAuthToken()) {?>
     <form action="/auth/" method="post">
         <input type="text" name="username" placeholder="login vk">

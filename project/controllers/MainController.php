@@ -12,6 +12,8 @@ class MainController extends Controller
 
     public function init(){
 
+        var_dump($this->token);
+
         if(!$this->token) {
             $this->title = 'Требуется авторизация';
             return $this->render('auth/index');
