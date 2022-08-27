@@ -1,11 +1,22 @@
+
 <?php
 
-use Core\Messages;
+//use Core\Messages;
+//
+//echo 'bot';
+//$mes = new Messages();
+//echo '<pre>';
+////var_dump($mes);
+//echo '</pre>';
+//
+////$mes->send('-182985865', '|Грязный удар|');
+//
+//$mes->getHistory('-182985865');
 
-echo 'bot';
-$mes = new Messages();
-echo '<pre>';
-//var_dump($mes);
-echo '</pre>';
 
-$mes->send('-182985865', '|Грязный удар|');
+?>
+
+<div class="container">
+    <h1>bot</h1>
+</div>
+
