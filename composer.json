@@ -1,0 +1,19 @@
+{
+    "name": "mys9ys9ka/pkbot.loc",
+    "autoload": {
+        "psr-4": {
+            "Mys9ys9ka\\PkbotLoc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mys9ys9ka",
+            "email": "rjbexa@yandex.ru"
+        }
+    ],
+    "require": {
+        "getjump/vk": "*",
+        "twbs/bootstrap": "5.0.2",
+        "components/jquery": "^3.6"
+    }
+}

@@ -1,0 +1,57 @@
+@elemBack: rgb(166, 178, 170);
+.body_container{
+  .user_profile{
+    background: @elemBack;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 7px;
+
+    .get_message{
+      display: inline-block;
+
+      padding: 5px 8px;
+      border-radius: 5px;
+
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(224, 224, 224, 0.15);
+      box-sizing: border-box;
+
+      /* Note: backdrop-filter has minimal browser support */
+
+      text-align: center;
+      cursor: pointer;
+
+      /* Note: backdrop-filter has minimal browser support */
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.6);
+      }
+
+      &:active {
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0px 4px 4px transparent;
+      }
+    }
+  }
+
+  .message_container{
+    background: @elemBack;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.3), 0px 4px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 7px;
+  }
+
+  .button_container{
+
+  }
+}

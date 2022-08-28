@@ -2,6 +2,7 @@ RewriteEngine On
 RewriteBase /
 
 RewriteCond %{REQUEST_URI} !^/project/webroot/
+RewriteCond %{REQUEST_URI} !^/project/ajax/
 RewriteCond %{REQUEST_URI} !^/src/
 RewriteCond %{REQUEST_URI} !^/vendor/
 RewriteRule .+ index.php

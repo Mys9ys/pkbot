@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title><?= $title ? : 'Наш фреймворк' ?></title>
 
+    <link rel="stylesheet" href="/src/bot/style.min.css">
+
     <link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
 
 
