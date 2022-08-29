@@ -5,4 +5,4 @@ use Core\Messages;
 
 $mes = new Messages();
 
-$res = $mes->getHistory();
+$res = $mes->getStepInfo();

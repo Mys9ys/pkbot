@@ -10,9 +10,11 @@ class Messages
     private $sendMethod = 'messages.send?';
     private $historyMethod = 'messages.getHistory?';
 
-    private $v = '5.101';
+    private $v = '5.131';
 
     private $lastMessage = '';
+    private $buttons = [];
+    private $historyResponse = [];
 
     public function send($sendId, $message)
     {
@@ -38,29 +40,41 @@ class Messages
 //            'offset' => '0',
             'start_message_id' => $this->lastMessage ?: -1,
             'v' => $this->v,
-//            'count' => '5',
+            'count' => 10,
             'access_token' => $this->token
         ];
 
-        $request = file_get_contents($this->methodUrl . $this->historyMethod . http_build_query($param));
+        $response = file_get_contents($this->methodUrl . $this->historyMethod . http_build_query($param));
 
 //        if($request) $this->parseMessage($request);
 
-        echo '<pre>';
-        var_dump(json_decode($request, true));
+        if($response){
+
+            $this->historyResponse = json_decode($response, true)['response']['items'];
+
+            echo '<pre>';
+            var_dump($this->historyResponse);
 
 
-        echo '</pre>';
+            echo '</pre>';
 
-        $ifp = fopen('json.json', "a");
-        $res = fwrite($ifp, $request);
-        fclose($ifp);
+            $ifp = fopen('json.json', "w");
+            $res = fwrite($ifp, $response);
+            fclose($ifp);
+
+            $this->parseMessage();
+
+        }
 
     }
 
-    protected function parseMessage($res)
+    protected function parseMessage()
     {
-        $result = [];
+        $arMessages = $this->historyResponse;
+
+        $this->lastMessage = $arMessages[0]['id'];
+
+
 
     }
 
@@ -69,8 +83,7 @@ class Messages
         $this->lastMessage = $id;
     }
 
-    private function getLastMessages()
-    {
-        return $this->lastMessage;
+    public function getStepInfo(){
+        $this->getHistory();
     }
 }
