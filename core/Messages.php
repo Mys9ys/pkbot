@@ -48,7 +48,7 @@ class Messages
 
 //        if($request) $this->parseMessage($request);
 
-        if($response){
+        if ($response) {
 
             $this->historyResponse = json_decode($response, true)['response']['items'];
 
@@ -72,18 +72,21 @@ class Messages
     {
         $arMessages = $this->historyResponse;
 
+        if($this->lastMessage) $arMessages = array_slice($arMessages, 0 , $arMessages[0]['id']-$this->lastMessage);
+
         $this->lastMessage = $arMessages[0]['id'];
 
-
-
     }
+
+
 
     protected function lastMessages($id)
     {
         $this->lastMessage = $id;
     }
 
-    public function getStepInfo(){
+    public function getStepInfo()
+    {
         $this->getHistory();
     }
 }
